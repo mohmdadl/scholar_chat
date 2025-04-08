@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "8958547021",
+    "project_id": "schoolar-chat-a8ca1",
+    "storage_bucket": "schoolar-chat-a8ca1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:8958547021:android:0d00431f5274d858c53804",
+        "android_client_info": {
+          "package_name": "com.example.weather_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5NFKidzaYqOYxA-jc3RlJeHUqZbbjXXc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

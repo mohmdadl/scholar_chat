@@ -1,17 +1,30 @@
 import 'package:flutter/material.dart';
 
+import '../../services/custom_validator.dart';
+
 class CustomTextFeild extends StatelessWidget {
-  String hintString;
-  IconData? myIcon;
-  CustomTextFeild({Key? key, required this.hintString,required this.myIcon}) : super(key: key);
+  final String hintString;
+  final IconData myIcon;
+  final TextInputType? textInputType;
+  final Function(String)? onChanged;
+  final bool isPassword;
+  final String validateType;
+
+  CustomTextFeild({
+    Key? key,
+    required this.validateType,
+    required this.hintString,
+    required this.myIcon,
+    this.textInputType,
+    this.onChanged,
+    this.isPassword = false,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12),
-      child: TextField(
-        
+      child: TextFormField(
         decoration: InputDecoration(
           prefixIcon: Icon(myIcon),
           enabledBorder: const OutlineInputBorder(
@@ -25,6 +38,10 @@ class CustomTextFeild extends StatelessWidget {
             color: Colors.white,
           ),
         ),
+        validator: CustomValidator(validateType),
+        onChanged: onChanged,
+        keyboardType: textInputType,
+        obscureText: isPassword,
       ),
     );
   }
