@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:scholar_chat/services/custom_validator.dart';
 import '../firebase_options.dart';
+import 'features/Chat/presentation/pages/home_page.dart';
 import 'features/auth/Presentation/pages/signin_page.dart';
 import 'features/auth/Presentation/pages/signup_page.dart';
 
@@ -23,10 +23,11 @@ class ScholarChat extends StatelessWidget {
         useMaterial3: false,
         primarySwatch: Colors.grey,
       ),
-      initialRoute: SignUpPage.signupRoute,
+      initialRoute: SignUpPage.routeName,
       routes: {
-        SignUpPage.signupRoute: (context) => const SignUpPage(),
-        SignInPage.signinRoute: (context) => const SignInPage(),
+        SignUpPage.routeName: (context) => const SignUpPage(),
+        SignInPage.routeName: (context) =>  SignInPage(),
+        HomePage.routeName: (context) =>  HomePage(),
       },
       debugShowCheckedModeBanner: false,
       title: 'Chat',

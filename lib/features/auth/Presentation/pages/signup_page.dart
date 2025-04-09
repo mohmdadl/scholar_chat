@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:scholar_chat/features/Chat/presentation/pages/home_page.dart';
 import 'package:scholar_chat/services/custom_validator.dart';
 import '../../../../Core/themes.dart';
 import '../../../../Shared/widgets/my_button.dart';
@@ -9,10 +10,9 @@ import 'package:scholar_chat/services/regeister.dart';
 import 'signin_page.dart';
 
 class SignUpPage extends StatefulWidget {
-  static const String signupRoute = 'signupRouteName';
+  static const String routeName = 'signupRouteName';
 
   const SignUpPage({Key? key}) : super(key: key);
-
   @override
   State<SignUpPage> createState() => _SignUpPageState();
 }
@@ -68,7 +68,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     CustomTextFeild(
                       hintString: 'Username',
                       myIcon: Icons.person,
-                      validateType: CustomValidator.validateName,
+                      validateType: CustomValidator.registerValidateName,
                       onChanged: (p0) {
                         userName = p0;
                       },
@@ -80,7 +80,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     CustomTextFeild(
                       hintString: 'Email Address',
                       myIcon: Icons.email,
-                      validateType: CustomValidator.validateEmaile,
+                      validateType: CustomValidator.registerValidateEmaile,
                       onChanged: (p0) {
                         emailAddress = p0;
                       },
@@ -92,7 +92,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     CustomTextFeild(
                       hintString: 'Password',
                       myIcon: Icons.key,
-                      validateType: CustomValidator.validatePassword,
+                      validateType: CustomValidator.registerValidatePassword,
                       onChanged: (p0) {
                         password = p0;
                       },
@@ -114,11 +114,15 @@ class _SignUpPageState extends State<SignUpPage> {
                             );
                             if (success) {
                               Navigator.pushReplacementNamed(
-                                  context, '/signin');
+                                  context, HomePage.routeName);
+                            } else {
+                              // Add this block to handle server-side validation failures
+                              showCustomSnackBar(
+                                  context, 'Invalid email or password');
                             }
                           } catch (e) {
                             showCustomSnackBar(context, 'Error: $e');
-                          } 
+                          }
                           setState(() => isLoading = false);
                         }
                       },
@@ -130,8 +134,8 @@ class _SignUpPageState extends State<SignUpPage> {
                         Text('already have an account? ', style: minWhiteStyle),
                         TextButton(
                           onPressed: () {
-                            Navigator.pushNamed(
-                                context, SignInPage.signinRoute);
+                           Navigator.pushReplacementNamed(
+                                  context, SignInPage.routeName);
                           },
                           child: const Text('Sign In'),
                         ),

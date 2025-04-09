@@ -19,9 +19,12 @@ if (value == null || value.isEmpty) {
 
 class CustomValidator {
 
-  static const String validatePassword = 'password';
-  static const String validateEmaile = 'email';
-  static const String validateName = 'name';
+  static const String registerValidatePassword = 'password';
+  static const String registerValidateEmaile = 'email';
+  static const String registerValidateName = 'name';
+   static const String loginValidateEmail = 'loginEmail';
+    static const String loginValidatePassword = 'loginPassword';
+
   
   final String validateType;
 
